@@ -11,6 +11,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {GetImageUrlPipe} from './common/pipes/get-image-url.pipe';
 import {FormsModule} from '@angular/forms';
 import { LoginFormComponent } from './public/login/login-form/login-form.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { AuthHomeComponent } from './auth/auth-home/auth-home.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { LoginFormComponent } from './public/login/login-form/login-form.compone
     HomeComponent,
     VehiclesComponent,
     GetImageUrlPipe,
-    LoginFormComponent
+    LoginFormComponent,
+    AuthHomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [VehiclesService],
   bootstrap: [AppComponent]
