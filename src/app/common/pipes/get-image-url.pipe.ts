@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
+import {API} from '../../config/api';
 
 @Pipe({
   name: 'getImageUrl'
@@ -6,7 +7,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class GetImageUrlPipe implements PipeTransform {
 
   transform(imageName: any, args?: any): any {
-    return `http://rentals-api.webtraining.fun/images/vehicles/${imageName}`;
+    return `${API.IMAGES_BASE_URL}/${imageName}`;
   }
 
 }

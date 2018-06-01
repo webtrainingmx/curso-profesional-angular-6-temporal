@@ -8,11 +8,17 @@ import {Component, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   appName = 'Rentapy';
+  isModalActive = false;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  toggleModal() {
+    console.log('click!');
+    this.isModalActive = !this.isModalActive;
   }
 
 }
