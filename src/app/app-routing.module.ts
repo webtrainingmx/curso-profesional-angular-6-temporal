@@ -4,6 +4,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './public/home/home.component';
 import {FooterComponent} from './common/footer/footer.component';
 import {AuthHomeComponent} from './auth/auth-home/auth-home.component';
+import {PublicGuard} from './common/guards/public.guard';
+import {AuthGuard} from './common/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,13 +13,25 @@ const routes: Routes = [
   }, {
     path: 'home',
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [PublicGuard]
   },
   {
     path: 'auth-home',
-    component: AuthHomeComponent
-  }
+    component: AuthHomeComponent,
+    canActivate: [AuthGuard]
+  },
+  // {
+  //   path: 'vehicles/:id', component: VehicleDetailComponent
+  // }
 ];
+// /auth
+//   /messages
+//   /control-panel
+// /public
+//   /vehicles
+//     /search
+
 
 @NgModule({
   imports: [
