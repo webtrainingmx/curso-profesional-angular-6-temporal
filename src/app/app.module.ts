@@ -14,6 +14,7 @@ import {LoginFormComponent} from './public/login/login-form/login-form.component
 import {AppRoutingModule} from './/app-routing.module';
 import {AuthHomeComponent} from './auth/auth-home/auth-home.component';
 import {SessionStorageService} from 'ngx-webstorage';
+import {SingleVehicleComponent} from './public/vehicles/single-vehicle/single-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {SessionStorageService} from 'ngx-webstorage';
     VehiclesComponent,
     GetImageUrlPipe,
     LoginFormComponent,
-    AuthHomeComponent
+    AuthHomeComponent,
+    SingleVehicleComponent
   ],
   imports: [
     BrowserModule,

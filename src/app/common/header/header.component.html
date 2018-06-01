@@ -21,11 +21,11 @@
         </div>
 
         <div class="navbar-end">
-          <a class="navbar-item" (click)="toggleModal()">
+          <a class="navbar-item" (click)="toggleModal()" *ngIf="! _authService.isLoggedIn()">
             Login
           </a>
 
-          <a class="navbar-item">
+          <a class="navbar-item" *ngIf=" _authService.isLoggedIn()">
             Logout
           </a>
 

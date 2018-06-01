@@ -1,3 +1,22 @@
-<div class="content">
-  <h1>Home privado</h1>
+<div class="container margin-top-sm margin-bottom-sm">
+  <div class="b-content">
+    <div class="content">
+      <h2>
+        <i class="fas fa-car"></i>
+        My vehicles</h2>
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter-desktop is-one-third-tablet"
+           *ngFor="let vehicle of myVehicles">
+
+        <app-single-vehicle [vehicle]="vehicle"></app-single-vehicle>
+
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<h2>Estos son autos públicos</h2>
+<app-vehicles></app-vehicles>
