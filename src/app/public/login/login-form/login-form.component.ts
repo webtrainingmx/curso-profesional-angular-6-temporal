@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from '../../../common/services/authentication.service';
+import {SessionStorageService} from 'ngx-webstorage';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +14,9 @@ export class LoginFormComponent implements OnInit {
     password: 'esmeralda'
   };
 
-  constructor() {
+  constructor(public _authService: AuthenticationService,
+              public _sessionStorage: SessionStorageService,
+              public router: Router) {
   }
 
   ngOnInit() {
@@ -20,6 +25,24 @@ export class LoginFormComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
     console.log('>> sent POST request with form');
+
+    this._authService.login(this.user.email, this.user.password).subscribe(
+      (data) => {
+        // Data from server (laravel)
+        console.log(data);
+        this._authService.user = data;
+        this._authService.hasSession = true;
+        this._sessionStorage.store('user', data);
+
+        this.router.navigate(['/auth-home']);
+      },
+      error => {
+        console.error(error);
+        this._authService.hasSession = false;
+      },
+      () => {
+      }
+    );
   }
 
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {API} from '../../config/api';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,18 @@ export class AuthenticationService {
   hasSession = false;
   user: any;
 
-  constructor(public _http: HttpClient) {
+  constructor(public _http: HttpClient,
+              public _sessionStorage: SessionStorageService) {
   }
 
   public isLoggedIn() {
-    // const user = ''
-    return true;
+    const user = this._sessionStorage.retrieve('user');
+
+    if (!!user) {
+      this.user = user;
+      this.hasSession = true;
+    }
+    return this.hasSession;
   }
 
   public login(email: string, password: string) {

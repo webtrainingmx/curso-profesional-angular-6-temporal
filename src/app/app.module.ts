@@ -10,9 +10,10 @@ import {VehiclesService} from './public/vehicles/services/vehicles.service';
 import {HttpClientModule} from '@angular/common/http';
 import {GetImageUrlPipe} from './common/pipes/get-image-url.pipe';
 import {FormsModule} from '@angular/forms';
-import { LoginFormComponent } from './public/login/login-form/login-form.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { AuthHomeComponent } from './auth/auth-home/auth-home.component';
+import {LoginFormComponent} from './public/login/login-form/login-form.component';
+import {AppRoutingModule} from './/app-routing.module';
+import {AuthHomeComponent} from './auth/auth-home/auth-home.component';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AuthHomeComponent } from './auth/auth-home/auth-home.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [VehiclesService],
+  providers: [VehiclesService, SessionStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
